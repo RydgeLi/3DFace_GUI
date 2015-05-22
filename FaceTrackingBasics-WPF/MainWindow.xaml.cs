@@ -14,17 +14,20 @@ namespace FaceTrackingBasics
     using System.Windows.Media.Imaging;
     using Microsoft.Kinect;
     using Microsoft.Kinect.Toolkit;
-    using System.Runtime.InteropServices; 
+    using System.Runtime.InteropServices;
+    using System.Text; 
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        [DllImport("D:\\BS\\DLL\\Identify_dll\\Debug\\Identify_dll.dll", CallingConvention = CallingConvention.Cdecl)]
+        //引入注册人脸模块的Registration的DLL
         [DllImport("D:\\BS\\DLL\\Registration_dll\\Debug\\Registration_dll.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void perform_shu();
 
-        public static extern void registration_shu(string probe_face);
+        //引入识别人脸模块Identify的DLL
+        [DllImport("D:\\BS\\DLL\\Identify_dll\\Debug\\Identify_dll.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void identify_shu();
 
         private static readonly int Bgr32BytesPerPixel = (PixelFormats.Bgr32.BitsPerPixel + 7) / 8;
@@ -32,7 +35,8 @@ namespace FaceTrackingBasics
         private WriteableBitmap colorImageWritableBitmap;
         private byte[] colorImageData;
         private ColorImageFormat currentColorImageFormat = ColorImageFormat.Undefined;
-        private string faceInfoSaveRoot = ".";
+        private string faceInfoSaveRoot = "D:\\BS\\shu_face";
+        private string probe_file;
         public MainWindow()
         {
             InitializeComponent();
@@ -143,7 +147,7 @@ namespace FaceTrackingBasics
             }
 
             string probe_name = this.nameInputBox.Text.Trim();
-            string userFaceInfoRoot = this.faceInfoSaveRoot + "\\probe_face";
+            string userFaceInfoRoot = this.faceInfoSaveRoot + "\\probe";
             try
             {
                 if(!Directory.Exists(userFaceInfoRoot))
@@ -157,6 +161,7 @@ namespace FaceTrackingBasics
             }
 
             int faceCount = faceTrackingViewer.WriteFaceInfo(userFaceInfoRoot, probe_name);
+            probe_file = userFaceInfoRoot + "\\" + probe_name + ".txt";
             if(faceCount == 0)
             {
                 //未检测到人脸
@@ -169,12 +174,18 @@ namespace FaceTrackingBasics
             }
 
             //加入人脸注册模块
-
+            perform_shu();
         }
 
-        private void Identify_Button(object sender, RoutedEventArgs e)//计算人脸距离i，显示识别结果
+        private void Identify_Button(object sender, RoutedEventArgs e)//计算人脸距离，显示识别结果
         {
             identify_shu();
+            BitmapImage imagetemp = new BitmapImage(new Uri("D:\\BS\\shu_face\\result\\rgb_result.bmp", UriKind.Absolute));
+            this.result_image.Source = imagetemp;
+            StreamReader sr = new StreamReader("D:\\BS\\shu_face\\result\\info_result.txt", Encoding.UTF8);
+            string line = sr.ReadLine();
+            this.ResultBox.Text = line;
+            this.statusLabel.Content = "识别结束";
         }
     }
 }

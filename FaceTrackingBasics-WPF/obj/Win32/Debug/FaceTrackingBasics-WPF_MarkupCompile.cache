@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Rydge\Desktop\Kinect Samples\FaceTrackingBasics-WPF\obj\Win32\Debug\
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\
 FaceTrackingBasics
 none
 false
 DEBUG;TRACE
-C:\Users\Rydge\Desktop\Kinect Samples\FaceTrackingBasics-WPF\App.xaml
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\App.xaml
 2-221725455
 
 6-1641040393
-16-1773429653
+16-312335932
 FaceTrackingViewer.xaml;MainWindow.xaml;
 
 False

@@ -79,7 +79,7 @@ namespace FaceTrackingBasics
         }
 
         //
-        public int WriteFaceInfo(string pathRoot, string time)
+        public int WriteFaceInfo(string pathRoot, string probe_name)
         {
             int faceCount = 0;
             foreach (var tracker in this.trackedSkeletons)
@@ -102,8 +102,8 @@ namespace FaceTrackingBasics
                 BitmapEncoder bitmapEncoder = new BmpBitmapEncoder();
                 bitmapEncoder.Frames.Add(BitmapFrame.Create(faceWriteableBitmap));
 
-                string imagePath = pathRoot + "\\face_image_" + time + ".bmp";
-                string depthPath = pathRoot + "\\face_depth_" + time + ".txt";
+                string imagePath = pathRoot + "\\" + probe_name + ".bmp";
+                //string depthPath = pathRoot + "\\face_depth_" + probe_name + ".txt";
                 try
                 {
                     using (var fs = new FileStream(imagePath, FileMode.Create))
@@ -111,19 +111,19 @@ namespace FaceTrackingBasics
                         bitmapEncoder.Save(fs);
                     }
 
-                    using (var sw = new StreamWriter(depthPath))
-                    {
-                        sw.WriteLine("{0} {1} {2} {3}", faceRect.Left, faceRect.Top, faceRect.Width, faceRect.Height);
+                    //using (var sw = new StreamWriter(depthPath))
+                    //{
+                    //    sw.WriteLine("{0} {1} {2} {3}", faceRect.Left, faceRect.Top, faceRect.Width, faceRect.Height);
 
-                        for (int i = 0; i < faceRect.Height; i++)
-                        {
-                            for (int j = 0; j < faceRect.Width; j++)
-                            {
-                                var depth = (this.depthImage[(faceRect.Top + i) * 640 + faceRect.Left + j]) >> 3;
-                                sw.WriteLine("{0, -4} {1, -4} {2}", j, i, depth);
-                            }
-                        }
-                    }
+                    //    for (int i = 0; i < faceRect.Height; i++)
+                    //    {
+                    //        for (int j = 0; j < faceRect.Width; j++)
+                    //        {
+                    //            var depth = (this.depthImage[(faceRect.Top + i) * 640 + faceRect.Left + j]) >> 3;
+                    //            sw.WriteLine("{0, -4} {1, -4} {2}", j, i, depth);
+                    //        }
+                    //    }
+                    //}
                 }
                 catch (IOException)
                 {
@@ -133,7 +133,7 @@ namespace FaceTrackingBasics
                 // 写入脸部特征点信息
                 try
                 {
-                    string landmarkPath = pathRoot + "\\face_landmark_" + time + ".txt";
+                    string landmarkPath = pathRoot + "\\" + probe_name + ".txt";
                     var fs = new FileStream(landmarkPath, FileMode.Create);
                     var sw = new StreamWriter(fs);
 
@@ -437,6 +437,21 @@ namespace FaceTrackingBasics
                 drawingContext.DrawGeometry(Brushes.LightYellow, new Pen(Brushes.LightYellow, 1.0), faceModelGroup);
             }
 
+            public void DrawLandmark(DrawingContext drawingContext)
+            {
+                if (!this.lastFaceTrackSucceeded || this.skeletonTrackingState != SkeletonTrackingState.Tracked)
+                {
+                    return;
+                }
+
+                drawingContext.DrawEllipse(null, new Pen(Brushes.Red, 1.5), new Point(this.facePoints[21].X, this.facePoints[21].Y), 2, 2);
+                drawingContext.DrawEllipse(null, new Pen(Brushes.Blue, 1.5), new Point(this.facePoints[54].X, this.facePoints[54].Y), 2, 2);
+                drawingContext.DrawEllipse(null, new Pen(Brushes.Yellow, 1.5), new Point(this.facePoints[5].X, this.facePoints[5].Y), 2, 2);
+                drawingContext.DrawEllipse(null, new Pen(Brushes.Green, 1.5), new Point(this.facePoints[88].X, this.facePoints[88].Y), 2, 2);
+                drawingContext.DrawEllipse(null, new Pen(Brushes.OrangeRed, 1.5), new Point(this.facePoints[89].X, this.facePoints[89].Y), 2, 2);
+                drawingContext.DrawEllipse(null, new Pen(Brushes.White, 1.5), new Point(this.facePoints[10].X, this.facePoints[10].Y), 2, 2);
+            }
+
             /// <summary>
             /// Updates the face tracking information for this skeleton
             /// </summary>
@@ -480,7 +495,9 @@ namespace FaceTrackingBasics
                             faceTriangles = frame.GetTriangles();
                         }
 
+                        this.faceRect = frame.FaceRect;
                         this.facePoints = frame.GetProjected3DShape();
+                        this.face3DPoints = frame.Get3DShape();
                     }
                 }
             }

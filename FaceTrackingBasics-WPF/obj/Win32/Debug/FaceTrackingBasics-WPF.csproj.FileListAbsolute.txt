@@ -21,3 +21,26 @@ C:\Users\Rydge\Desktop\Kinect Samples\FaceTrackingBasics-WPF\obj\Win32\Debug\Fac
 C:\Users\Rydge\Desktop\Kinect Samples\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF.csproj.GenerateResource.Cache
 C:\Users\Rydge\Desktop\Kinect Samples\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF.exe
 C:\Users\Rydge\Desktop\Kinect Samples\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF.pdb
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\bin\x86\Debug\FaceTrackingBasics-WPF.exe.config
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF.exe
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF.pdb
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF.csprojResolveAssemblyReference.cache
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingViewer.baml
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingViewer.g.cs
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\MainWindow.g.cs
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\App.g.cs
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\GeneratedInternalTypeHelper.g.cs
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF_MarkupCompile.cache
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF_MarkupCompile.lref
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\bin\x86\Debug\FaceTrackData.dll
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\bin\x86\Debug\FaceTrackLib.dll
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\bin\x86\Debug\FaceTrackingBasics-WPF.exe
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\bin\x86\Debug\FaceTrackingBasics-WPF.pdb
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\bin\x86\Debug\Microsoft.Kinect.Toolkit.dll
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\bin\x86\Debug\Microsoft.Kinect.Toolkit.FaceTracking.dll
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\bin\x86\Debug\Microsoft.Kinect.Toolkit.FaceTracking.pdb
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\bin\x86\Debug\Microsoft.Kinect.Toolkit.pdb
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\MainWindow.baml
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF.g.resources
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics.Properties.Resources.resources
+D:\BS\3DFace_GUI\FaceTrackingBasics-WPF\obj\Win32\Debug\FaceTrackingBasics-WPF.csproj.GenerateResource.Cache

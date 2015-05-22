@@ -72,7 +72,7 @@
                 <Label  Grid.Row="0" Margin="5,5,5,5" Width="130" FontSize="20" HorizontalAlignment="Left">识别结果为:</Label>
 
                 <TextBlock Grid.Row="1" Margin="5,5,5,5" Name="ResultBox" Width="130" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="待检测" TextAlignment="Center"/>
-
+                <Image Grid.Row="2" Name="result_image"/>
             </Grid>
         </Grid>
 
